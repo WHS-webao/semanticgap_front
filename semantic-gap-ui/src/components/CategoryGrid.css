@@ -1,0 +1,135 @@
+/* ── 1. 전체 그리드 ───────────────────── */
+.grid-container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+
+  /* 화면 크기에 따라 칼럼 개수 유동 조절 */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+/* ── 2. 대분류 카드 ───────────────────── */
+.column {
+  /* 컬러 변수 */
+  --border-color: var(--col-color);
+
+  display: flex;
+  flex-direction: column;
+  border: 4px solid var(--border-color);
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* 대분류 헤더 */
+.main-title {
+  background: var(--border-color);
+  color: #fff;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* 카드 본문 */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+/* ── 3. “대→소” 바로 나오는 리스트 ───────── */
+.sub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.sub-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.92rem;
+  word-break: break-word;
+}
+
+.sub-list li:last-child {
+  border-bottom: none;
+}
+
+/* ── 4. 중분류 블록 ───────────────────── */
+.mid-block {
+  /* 필요하다면 블록간 여백 추가 */
+  /* margin-top: 1rem; */
+}
+
+.mid-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--border-color);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+
+/* ── 5. 반응형 폰트 조절(Optional) ───────── */
+.main-title {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+.mid-title {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+.sub-list li {
+  font-size: clamp(0.8rem, 1.8vw, 0.92rem);
+}
+
+/* ── 6. 모바일 브레이크포인트 ─────────── */
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    padding: 0.75rem;
+  }
+  .main-title {
+    padding: 0.5rem;
+  }
+}
+
+.sub-link {
+  display: block;           /* li 전체 영역을 클릭 가능하게 */
+  width: 100%;
+  padding: 0.5rem 0;        /* li와 동일 여백 */
+  color: #333;              /* 링크 색상 */
+  text-decoration: none;    /* 밑줄 제거 */
+}
+
+.sub-link:hover {
+  text-decoration: underline;
+  color: var(--col-color);  /* hover 시 컬럼 색 강조 */
+}
+.main-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-link:hover {
+  text-decoration: underline;
+}
+
+.mid-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mid-link:hover {
+  text-decoration: underline;
+}
